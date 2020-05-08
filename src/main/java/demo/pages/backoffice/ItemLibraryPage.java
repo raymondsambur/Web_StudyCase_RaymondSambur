@@ -106,12 +106,17 @@ public class ItemLibraryPage {
         return wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(String.format(xpath, generatedItemName)))).isDisplayed();
     }
 
-    public void addModifier(String modifierName){
+    public void addModifier(String modifierName) {
         WebElement modifier = getWebDriver()
-                .findElement(By.xpath("//label[text()='"+modifierName+"']/parent::div/input"));
+                .findElement(By.xpath("//label[text()='" + modifierName + "']/parent::div/input"));
         JavascriptExecutor js = (JavascriptExecutor) WebDriverInstance.webDriver;
-        js.executeScript("arguments[0].scrollIntoView();",modifier);
+        js.executeScript("arguments[0].scrollIntoView();", modifier);
         modifier.click();
+    }
+
+    public boolean checkErrorMessage() {
+        WebDriverWait wait = new WebDriverWait(WebDriverInstance.webDriver, 20);
+        return wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//span[contains(@class, 'glyphicon-remove')]"))).isDisplayed();
     }
 
 }

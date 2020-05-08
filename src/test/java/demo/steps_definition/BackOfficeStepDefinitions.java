@@ -160,4 +160,9 @@ public class BackOfficeStepDefinitions {
     public void userSelectAsModifier(String modifierName) {
         itemLibraryPage.addModifier(modifierName);
     }
+
+    @And("User see error message for empty field")
+    public void userSeeErrorMessageForEmptyField() {
+        Assert.assertTrue(itemLibraryPage.checkErrorMessage());
+    }
 }
